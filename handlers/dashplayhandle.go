@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"path"
 
-	"../utils"
+	"github.com/Prendo93/low-latency-preview/utils"
 )
 
 type DashPlayHandler struct {

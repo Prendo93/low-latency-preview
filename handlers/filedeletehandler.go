@@ -6,7 +6,7 @@ import (
 	"path"
 	"time"
 
-	"../utils"
+	"github.com/Prendo93/low-latency-preview/utils"
 )
 
 // UploadHandler handles for http delete
@@ -33,6 +33,8 @@ func (d *FileDeleteHandler) ServeHTTP(w http.ResponseWriter, req *http.Request) 
 
 func (d *FileDeleteHandler) serveHTTPImpl(curFilePath string, w http.ResponseWriter, req *http.Request) {
 	// check file existing
+	w.WriteHeader(200)
+	return
 	if _, err := os.Stat(curFilePath); err != nil {
 		utils.GetDeleteLogger().Debugf("file %s not exists \n", curFilePath)
 		return

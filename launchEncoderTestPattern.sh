@@ -26,9 +26,14 @@ ffmpeg/ffmpeg \
     -re \
     -f lavfi \
     -i "testsrc2=size=1920x1080:rate=30" \
-    -pix_fmt yuv420p \
+    -re \
+    -f s16le \
+    -i /dev/random \
+    -map 1:a \
     -map 0:v \
+    -c:a aac \
     -c:v ${x264enc} \
+    -pix_fmt yuv420p \
     -g 150 \
     -keyint_min 150 \
     -b:v 4000k \

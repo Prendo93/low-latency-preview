@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"./handlers"
-	"./utils"
+	"github.com/Prendo93/low-latency-preview/handlers"
+	"github.com/Prendo93/low-latency-preview/utils"
 	"github.com/gorilla/mux"
 )
 
@@ -48,8 +48,13 @@ func main() {
 		BaseDir: filePath,
 	}
 
+	file_optionsHandler := &handlers.FileOptionsHandler{}
+
+	utils.WriteMasterFile(args[0] + "/1234")
+
 	r := mux.NewRouter()
 	r.Handle("/ldash/{folder}/{name:[a-zA-Z0-9/_-]+}.{name:[a-zA-Z0-9/_-]+}", file_uploadHandler).Methods("PUT", "POST")
+	r.Handle("/ldash/{folder}/{name:[a-zA-Z0-9/_-]+}.{name:[a-zA-Z0-9/_-]+}", file_optionsHandler).Methods("OPTIONS")
 	r.Handle("/ldash/{folder}/{name:[a-zA-Z0-9/_-]+}.{name:[a-zA-Z0-9/_-]+}", file_downloadHandler).Methods("GET")
 	r.Handle("/ldash/{folder}/{name:[a-zA-Z0-9/_-]+}.{name:[a-zA-Z0-9/_-]+}", file_deleteHandler).Methods("DELETE")
 	r.Handle("/ldashplay/{folder}/{name:[a-zA-Z0-9/_-]+}.{name:[a-zA-Z0-9/_-]+}", dash_playHandler)
