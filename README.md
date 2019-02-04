@@ -57,13 +57,17 @@ Example:
 ## View your content
 
     Oh 💩 here we go!
-    View your stream at http://localhost:8080/ldash/play/1324/manifest.mpd
+    View your stream at http://localhost:8080/ldash/play/1234/manifest.mpd
 
 Go to that URL and you should see your stream! 
 
 To kill the streams...
 
     ./killAll.sh
+
+## HLS Manifests
+
+A matching HLS manifest can be found at `http://localhost:8080/ldash/1234/master.m3u8` and `http://localhost:8080/ldash/1234/manifest.m3u8`
 
 ## What do I do with this?
 
